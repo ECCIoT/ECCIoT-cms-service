@@ -27,7 +27,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">邮箱</label>
                     <div class="layui-inline">
-                        <input name="email" lay-verify="email" autocomplete="off" class="layui-input" type="text">
+                        <input name="email" lay-verify="email" autocomplete="off" class="layui-input" type="text" value="${}">
                     </div>
                 </div>
                 <!-- 密码 -->
@@ -71,6 +71,8 @@
                 </div>
                 <!-- 提交 -->
                 <div class="layui-form-item" align="center">
+                    <font size="3" color="red">${error_info}</font>
+                    <br>
                     <button class="layui-btn" lay-submit="" lay-filter="demo2">注册</button>
                 </div>
             </form>

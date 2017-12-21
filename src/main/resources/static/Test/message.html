@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>用户消息页</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">消息中心<span class="layui-badge">99+</span></li>
+        <li>消息管理<span class="layui-badge-dot"></span></li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            这里是消息中心<br>
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-small"><i class="layui-icon"></i></button>
+                <button class="layui-btn layui-btn-small"><i class="layui-icon"></i></button>
+                <button class="layui-btn layui-btn-small"><i class="layui-icon"></i></button>
+                <button class="layui-btn layui-btn-small"><i class="layui-icon"></i></button>
+            </div>
+        </div>
+        <div class="layui-tab-item">
+            这里是消息管理<br>
+            <div class="layui-btn-group">
+                <button class="layui-btn">增加</button>
+                <button class="layui-btn ">编辑</button>
+                <button class="layui-btn">删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../layui/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>

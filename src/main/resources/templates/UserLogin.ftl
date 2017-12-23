@@ -10,14 +10,14 @@
 <div class="layui-layout layui-layout-admin">
 
     <!-- 页面头部 -->
-    <#include "./common/header.ftl"/>
+<#include "./common/header.ftl"/>
 
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
 
 
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>注册新用户</legend>
+            <legend>用户登录</legend>
         </fieldset>
 
         <div>
@@ -25,12 +25,12 @@
             <br><br>
 
             <!-- 表单 -->
-            <form class="layui-form" action="/registerParam">
+            <form class="layui-form" action="/loginParam">
                 <!-- 邮箱 -->
                 <div class="layui-form-item">
                     <label class="layui-form-label">邮箱</label>
                     <div class="layui-input-inline">
-                        <input name="account_email" lay-verify="account_email" autocomplete="off" class="layui-input" type="text" value="${account_email!''}">
+                        <input name="email" lay-verify="account_email" autocomplete="off" class="layui-input" type="text" value="${account_email!''}">
                     </div>
                 </div>
                 <!-- 密码 -->
@@ -41,42 +41,11 @@
                     </div>
                     <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
                 </div>
-                <!-- 重复密码 -->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">重复密码</label>
-                    <div class="layui-input-inline">
-                        <input id="repwd" lay-verify="repass" placeholder="再次输入密码" autocomplete="off" class="layui-input" type="password">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
-                </div>
-                <!-- 手机号 -->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">手机</label>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <input name="account_phone" lay-verify="account_phone" autocomplete="off" class="layui-input" type="tel" value="${account_phone!''}">
-                        </div>
-                    </div>
-                </div>
-                <!-- 行业 -->
-                <div class="layui-form-item">
-                    <label class="layui-form-label">所属行业</label>
-                    <div class="layui-input-inline">
-                        <select name="account_industry" lay-filter="aihao">
-                            <option value=""></option>
-                            <option value="0">教育</option>
-                            <option value="1" selected="">物联网</option>
-                            <option value="2">金融</option>
-                            <option value="3">通信</option>
-                            <option value="4">其他</option>
-                        </select>
-                    </div>
-                </div>
                 <!-- 提交 -->
                 <div class="layui-form-item" align="center">
-                    <button class="layui-btn" lay-submit="" lay-filter="demo2">注册</button>
+                    <button class="layui-btn" lay-submit="" lay-filter="demo2">登录</button>
                     <br><br>
-                    <font color="#a9a9a9">已有账号，切换<a href="/loginPage">登录</a></font>
+                    <font color="#a9a9a9">还没有<a href="/registerPage">注册</a> 账号？</font>
                 </div>
             </form>
         </div>
@@ -117,7 +86,7 @@
                 }
             }
         });
-        
+
 
         //监听提交
         form.on('submit(demo1)', function(data){

@@ -14,40 +14,46 @@ import java.sql.SQLException;
  * Created by landriesnidis on 17-10-27.
  */
 @Controller
-public class UserRegisterController {
+public class UserLoginController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/registerPage")
-    public String registerPage(ModelMap map){
-        return "UserRegister";
+    @RequestMapping("/loginPage")
+    public String loginPage(ModelMap map){
+        return "UserLogin";
     }
 
-    @RequestMapping("/registerParam")
-    public String registerParam(final ModelMap map, HttpServletRequest request){
+    @RequestMapping("/logout")
+    public String logout(ModelMap map, HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/loginPage";
+    }
+
+    @RequestMapping("/loginParam")
+    public String loginParam(final ModelMap map, HttpServletRequest request){
 
         //获取请求的参数和sessionId
         String strEmail = request.getParameter("email");
         String strPassword = request.getParameter("password");
-        String strPhone = request.getParameter("phone");
-        int intIndustry = Integer.parseInt(request.getParameter("industry"));
         String strSession = request.getSession().getId();
 
 
         try
         {
-            //注册新用户
-            userService.createNewUser(strEmail, strPassword, strPhone, intIndustry, strSession);
+            //校验账号密码
+            userService.checkUserPassword(strEmail, strPassword, strSession);
 
             //保存用户名到session中
             request.getSession().setAttribute("account",strEmail);
+
+
         }
         catch (DataAccessException e)
         {
             SQLException exception = (SQLException)e.getCause();
             map.addAttribute("error_info",exception.getMessage());
-            return "UserRegister";
+            return "redirect:/loginPage";
         }
 
         return "redirect:/index";

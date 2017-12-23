@@ -1,5 +1,7 @@
 package pers.landriesnidis.ecc.dao;
 
+import pers.landriesnidis.ecc.bean.UserBean;
+
 import java.sql.SQLException;
 
 /**
@@ -16,16 +18,20 @@ public interface UserService {
      * @param strSession
      * @return
      */
-    boolean createNewUser(String strEmail, String strPassword, String strPhone, int intIndustry,String strSession);
+    boolean createNewUser(String strEmail, String strPassword, String strPhone, int intIndustry,String strSessionId);
 
     /**
      * 用户登录校验
      * @param account
      * @param password
-     * @param remember
      * @return
      */
-    boolean checkUserPassword(String account, String password, boolean remember);
+    boolean checkUserPassword(String account, String password,String strSessionId);
 
-
+    /**
+     * 校验用户的Session
+     * @param strSessionId
+     * @return
+     */
+    UserBean checkUserSession(String strSessionId);
 }

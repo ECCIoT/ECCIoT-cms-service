@@ -2,14 +2,14 @@ package pers.landriesnidis.ecc.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCallback;
-import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.*;
 import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
 import org.springframework.stereotype.Service;
+import pers.landriesnidis.ecc.bean.UserBean;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Map;
 
 /**
  * Created by landriesnidis on 17-12-20.
@@ -39,16 +39,24 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean checkUserPassword(String account, String password, boolean remember) {
-        jdbcTemplate.execute("", new PreparedStatementCallback<Object>() {
+    public boolean checkUserPassword(final String strEmail, final String strPassword, final String strSession) {
 
+        jdbcTemplate.update("CALL UserLogin(?,?,?)", new PreparedStatementSetter() {
             @Override
-            public Object doInPreparedStatement(PreparedStatement preparedStatement) throws SQLException, DataAccessException {
-                preparedStatement.setString(1,"");
-                return null;
+            public void setValues(PreparedStatement preparedStatement) throws SQLException {
+                preparedStatement.setString(1,strEmail);
+                preparedStatement.setString(2,strPassword);
+                preparedStatement.setString(3,strSession);
             }
         });
 
         return false;
+    }
+
+    @Override
+    public UserBean checkUserSession(String strSessionId) {
+        RowMapper<UserBean> mapper = new BeanPropertyRowMapper<UserBean>(UserBean.class);
+        UserBean user = jdbcTemplate.queryForObject("CALL CheckWebSession(?)",mapper,strSessionId);
+        return user;
     }
 }

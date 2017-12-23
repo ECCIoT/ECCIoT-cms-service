@@ -32,15 +32,15 @@
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">注销</a></li>
+            <li class="layui-nav-item"><a href="/logout">注销</a></li>
         </ul>
 
     <#else>
 
         <!--不存在用户信息-->
         <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item"><a href="">开发者中心</a></li>
-            <li class="layui-nav-item"><a href="">注册</a></li>
+            <li class="layui-nav-item"><a href="/loginPage">开发者中心</a></li>
+            <li class="layui-nav-item"><a href="/registerPage">注册</a></li>
         </ul>
 
     </#if>

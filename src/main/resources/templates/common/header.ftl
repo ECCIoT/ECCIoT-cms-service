@@ -28,7 +28,7 @@
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">消息提醒(${msg_msgcount})</a></dd>
+                    <dd><a href="">消息提醒(0)</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>

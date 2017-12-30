@@ -30,7 +30,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">邮箱</label>
                     <div class="layui-input-inline">
-                        <input name="email" lay-verify="account_email" autocomplete="off" class="layui-input" type="text" value="${account_email!''}">
+                        <input name="email" lay-verify="developerEmail" autocomplete="off" class="layui-input" type="text" value="${developerEmail!''}">
                     </div>
                 </div>
                 <!-- 密码 -->

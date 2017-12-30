@@ -30,7 +30,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">邮箱</label>
                     <div class="layui-input-inline">
-                        <input name="account_email" lay-verify="account_email" autocomplete="off" class="layui-input" type="text" value="${account_email!''}">
+                        <input name="developerEmail" lay-verify="developerEmail" autocomplete="off" class="layui-input" type="text" value="${developerEmail!''}">
                     </div>
                 </div>
                 <!-- 密码 -->
@@ -54,7 +54,7 @@
                     <label class="layui-form-label">手机</label>
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-                            <input name="account_phone" lay-verify="account_phone" autocomplete="off" class="layui-input" type="tel" value="${account_phone!''}">
+                            <input name="developerPhone" lay-verify="developerPhone" autocomplete="off" class="layui-input" type="tel" value="${developerPhone!''}">
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">所属行业</label>
                     <div class="layui-input-inline">
-                        <select name="account_industry" lay-filter="aihao">
+                        <select name="developerIndustry" lay-filter="aihao">
                             <option value=""></option>
                             <option value="0">教育</option>
                             <option value="1" selected="">物联网</option>

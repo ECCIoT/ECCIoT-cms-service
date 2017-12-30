@@ -1,22 +1,19 @@
 package pers.landriesnidis.ecc.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.*;
-import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
 import org.springframework.stereotype.Service;
-import pers.landriesnidis.ecc.bean.UserBean;
+import pers.landriesnidis.ecc.bean.DeveloperBean;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Map;
 
 /**
  * Created by landriesnidis on 17-12-20.
  */
 
 @Service
-public class UserServiceImpl implements UserService{
+public class DeveloperServiceImpl implements DeveloperService {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -54,9 +51,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserBean checkUserSession(String strSessionId) {
-        RowMapper<UserBean> mapper = new BeanPropertyRowMapper<UserBean>(UserBean.class);
-        UserBean user = jdbcTemplate.queryForObject("CALL CheckWebSession(?)",mapper,strSessionId);
+    public DeveloperBean checkUserSession(String strSessionId) {
+        RowMapper<DeveloperBean> mapper = new BeanPropertyRowMapper<DeveloperBean>(DeveloperBean.class);
+        DeveloperBean user = jdbcTemplate.queryForObject("CALL GetDeveloperInfoBySession(?)",mapper,strSessionId);
         return user;
     }
 }

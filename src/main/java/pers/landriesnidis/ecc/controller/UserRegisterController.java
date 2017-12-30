@@ -5,7 +5,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pers.landriesnidis.ecc.dao.UserService;
+import pers.landriesnidis.ecc.dao.DeveloperService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class UserRegisterController {
 
     @Autowired
-    private UserService userService;
+    private DeveloperService userService;
 
     @RequestMapping("/registerPage")
     public String registerPage(ModelMap map){
@@ -33,7 +33,6 @@ public class UserRegisterController {
         String strPhone = request.getParameter("phone");
         int intIndustry = Integer.parseInt(request.getParameter("industry"));
         String strSession = request.getSession().getId();
-
 
         try
         {

@@ -1,13 +1,11 @@
 package pers.landriesnidis.ecc.dao;
 
-import pers.landriesnidis.ecc.bean.UserBean;
-
-import java.sql.SQLException;
+import pers.landriesnidis.ecc.bean.DeveloperBean;
 
 /**
  * Created by landriesnidis on 17-12-20.
  */
-public interface UserService {
+public interface DeveloperService {
 
     /**
      * 创建新用户
@@ -15,7 +13,7 @@ public interface UserService {
      * @param strPassword
      * @param strPhone
      * @param intIndustry
-     * @param strSession
+     * @param strSessionId
      * @return
      */
     boolean createNewUser(String strEmail, String strPassword, String strPhone, int intIndustry,String strSessionId);
@@ -33,5 +31,5 @@ public interface UserService {
      * @param strSessionId
      * @return
      */
-    UserBean checkUserSession(String strSessionId);
+    DeveloperBean checkUserSession(String strSessionId);
 }

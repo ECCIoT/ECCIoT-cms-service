@@ -14,23 +14,18 @@ import java.sql.SQLException;
  * Created by landriesnidis on 17-10-27.
  */
 @Controller
-public class UserLoginController {
+public class ApplicationController {
 
     @Autowired
     private DeveloperService userService;
 
-    @RequestMapping("/loginPage")
+    @RequestMapping("/AppPage")
     public String loginPage(ModelMap map){
         return "UserLogin";
     }
 
-    @RequestMapping("/logout")
-    public String logout(ModelMap map, HttpServletRequest request){
-        request.getSession().invalidate();
-        return "redirect:/loginPage";
-    }
 
-    @RequestMapping("/loginParam")
+    @RequestMapping("/createApp")
     public String loginParam(final ModelMap map, HttpServletRequest request){
 
         //获取请求的参数和sessionId

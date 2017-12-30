@@ -13,7 +13,7 @@ public class DeviceGroupController {
     @RequestMapping("/group")
     public String homepage(ModelMap map){
         map.addAttribute("msg_msgcount","99+");
-        map.addAttribute("user_nickname","猿长大人");
+        map.addAttribute("user_email","猿长大人");
         return "DeviceGroup";
     }
 }

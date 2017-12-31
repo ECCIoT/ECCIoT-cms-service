@@ -49,16 +49,17 @@
                     ,title: '创建新应用' //不显示标题栏
                     ,closeBtn: false
                     ,area: '300px;'
-                    ,shade: 0.5
+                    ,shade: 0.8
                     ,id: 'layCreateApp' //设定一个id，防止重复弹出
                     ,btn: '取消'
                     ,btnAlign: 'c'
                     ,moveType: 1 //拖拽模式，0或者1
                     ,content: '' +
                             '<div style="padding: 15px; line-height: 22px; background-color: #393D49; color: #393D49; font-weight: 300;">' +
-                            '<form class="layui-form layui-form-pane" action="/">' +
-                            '<div class="layui-form-item"><label class="layui-form-label">应用名称</label><div class="layui-input-block"><input name="title" autocomplete="off" placeholder="请输入名称" class="layui-input" type="text"></div></div>' +
-                            '<div class="layui-form-item layui-form-text"><label class="layui-form-label">说明</label><div class="layui-input-block"><textarea placeholder="请输入内容" class="layui-textarea"></textarea></div></div>' +
+                            '<form class="layui-form layui-form-pane" action="/createApp">' +
+                            '<div class="layui-form-item"><label class="layui-form-label">应用名称</label><div class="layui-input-block"><input name="appName" autocomplete="off" placeholder="请输入名称" class="layui-input" type="text"></div></div>' +
+                            '<div class="layui-form-item layui-form-text"><label class="layui-form-label">说明</label>' +
+                            '<div class="layui-input-block"><textarea name="appNote" placeholder="请输入内容" class="layui-textarea"></textarea></div></div>' +
                             '<div class="layui-form-item"><button class="layui-btn" lay-submit="" lay-filter="demo1">创建</button><button type="reset" class="layui-btn layui-btn-primary">重置</button></div></form>' +
                             '</div>'
                 });

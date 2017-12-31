@@ -5,7 +5,7 @@
             <li class="layui-nav-item layui-nav-itemed">
                 <a class="" href="javascript:;">应用管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">应用概要分析</a></dd>
+                    <dd><a href="/AppPage">应用概要分析</a></dd>
                     <dd><a href="javascript:;">应用详情</a></dd>
                     <dd><a href="javascript:;">服务器配置</a></dd>
                 </dl>
@@ -19,7 +19,7 @@
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;">个人信息</a></dd>
                     <dd><a href="javascript:;">账号安全</a></dd>
-                    <dd><a href="javascript:;">注销</a></dd>
+                    <dd><a href="/logout">注销</a></dd>
                 </dl>
             </li>
 

@@ -1,6 +1,8 @@
 package pers.landriesnidis.ecc.dao;
 
-import pers.landriesnidis.ecc.bean.DeveloperBean;
+import pers.landriesnidis.ecc.bean.ApplicationBean;
+
+import java.util.List;
 
 /**
  * Created by landriesnidis on 17-12-20.
@@ -21,13 +23,13 @@ public interface ApplicationService {
      * @param strAPIKey
      * @return
      */
-    boolean getAppInfoByKey(String strAPIKey);
+    ApplicationBean getAppInfoByKey(String strAPIKey);
 
     /**
      * 查询当前Session对应用户所有的应用信息
      * @param strSessionId
      * @return
      */
-    boolean getAppLicBySession(String strSessionId);
+    List<ApplicationBean> getApplicationBySession(String strSessionId);
 
 }

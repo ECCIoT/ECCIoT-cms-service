@@ -5,6 +5,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pers.landriesnidis.ecc.dao.ApplicationService;
 import pers.landriesnidis.ecc.dao.DeveloperService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +18,12 @@ import java.sql.SQLException;
 public class ApplicationController {
 
     @Autowired
-    private DeveloperService userService;
+    private ApplicationService applicationService;
 
     @RequestMapping("/AppPage")
     public String loginPage(ModelMap map){
-        return "UserLogin";
+
+        return "ApplicationManage";
     }
 
 
@@ -29,20 +31,15 @@ public class ApplicationController {
     public String loginParam(final ModelMap map, HttpServletRequest request){
 
         //获取请求的参数和sessionId
-        String strEmail = request.getParameter("email");
-        String strPassword = request.getParameter("password");
+        String strAppName = request.getParameter("appName");
+        String strAppNote = request.getParameter("appNote");
         String strSession = request.getSession().getId();
 
 
         try
         {
-            //校验账号密码
-            userService.checkUserPassword(strEmail, strPassword, strSession);
-
-            //保存用户名到session中
-            request.getSession().setAttribute("account",strEmail);
-
-
+            //创建新应用
+            applicationService.createApp(strSession,strAppName, strAppNote);
         }
         catch (DataAccessException e)
         {
@@ -51,6 +48,6 @@ public class ApplicationController {
             return "redirect:/loginPage";
         }
 
-        return "redirect:/index";
+        return "redirect:/AppPage";
     }
 }

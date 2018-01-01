@@ -21,9 +21,22 @@ public class ApplicationController {
     private ApplicationService applicationService;
 
     @RequestMapping("/AppPage")
-    public String loginPage(ModelMap map){
+    public String loginPage(ModelMap map, HttpServletRequest request){
+
+        //检测Session是否有效,并载页面动态信息
+        String returnUrl = ControllerUtils.checkSessionInvalid(map,request);
+        if(returnUrl!=null)return returnUrl;
 
         return "ApplicationManage";
+    }
+
+    @RequestMapping("/ServerSetting")
+    public String serverSetting(ModelMap map, HttpServletRequest request){
+        //检测Session是否有效,并载页面动态信息
+        String returnUrl = ControllerUtils.checkSessionInvalid(map,request);
+        if(returnUrl!=null)return returnUrl;
+
+        return "ServerSetting";
     }
 
 
@@ -43,9 +56,8 @@ public class ApplicationController {
         }
         catch (DataAccessException e)
         {
-            SQLException exception = (SQLException)e.getCause();
-            map.addAttribute("error_info",exception.getMessage());
-            return "redirect:/loginPage";
+            String redirectUrl = ControllerUtils.getRedirectUrlByException(map,request,e);
+            if(redirectUrl!=null)return redirectUrl;
         }
 
         return "redirect:/AppPage";

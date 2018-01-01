@@ -32,4 +32,13 @@ public interface DeveloperService {
      * @return
      */
     DeveloperBean checkUserSession(String strSessionId);
+
+    /**
+     * 修改密码
+     * @param strSessionId
+     * @param pass
+     * @param newpass
+     * @return
+     */
+    boolean changePassword(String strSessionId,String pass,String newpass);
 }

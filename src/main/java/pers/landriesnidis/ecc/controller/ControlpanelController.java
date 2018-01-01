@@ -21,26 +21,12 @@ public class ControlpanelController {
     private DeveloperService userService;
 
     @RequestMapping("/index")
-    public String homepage(ModelMap map, HttpServletRequest request){
+    public String index(ModelMap map, HttpServletRequest request){
 
-        try
-        {
-            //校验账号密码
-            DeveloperBean user = userService.checkUserSession(request.getSession().getId());
+        //检测Session是否有效,并载页面动态信息
+        String returnUrl = ControllerUtils.checkSessionInvalid(map,request);
+        if(returnUrl!=null)return returnUrl;
 
-            //保存email到session中
-            request.getSession().setAttribute("email",user.getDeveloperEmail());
-
-            map.addAttribute("msg_msgcount","99+");
-            map.addAttribute("user_nickname",user.getDeveloperEmail());
-
-            return "ControlPanel";
-        }
-        catch (DataAccessException e)
-        {
-            SQLException exception = (SQLException)e.getCause();
-            map.addAttribute("error_info",exception.getMessage());
-            return "redirect:/loginPage";
-        }
+        return "ControlPanel";
     }
 }

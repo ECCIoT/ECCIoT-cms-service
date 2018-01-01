@@ -56,4 +56,17 @@ public class DeveloperServiceImpl implements DeveloperService {
         DeveloperBean user = jdbcTemplate.queryForObject("CALL GetDeveloperInfoBySession(?)",mapper,strSessionId);
         return user;
     }
+
+    @Override
+    public boolean changePassword(final String strSessionId, final String pass, final String newpass) {
+        jdbcTemplate.update("CALL ChangePassword(?,?,?)", new PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement preparedStatement) throws SQLException {
+                preparedStatement.setString(1,strSessionId);
+                preparedStatement.setString(2,pass);
+                preparedStatement.setString(3,newpass);
+            }
+        });
+        return false;
+    }
 }

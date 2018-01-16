@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * Created by landriesnidis on 17-12-30.
  */
 public class ApplicationBean {
-    private String appName,appNote,appAPIKey;
+    private String appName,appNote,appAPIKey,appServerSettings;
 
     public String getAppAPIKey() {
         return appAPIKey;
@@ -33,11 +33,20 @@ public class ApplicationBean {
         this.appNote = appNote;
     }
 
+    public String getAppServerSettings() {
+        return appServerSettings;
+    }
+
+    public void setAppServerSettings(String appServerSettings) {
+        this.appServerSettings = appServerSettings;
+    }
+
     public JSONObject toJson(){
         JSONObject json = new JSONObject();
         json.put("appName",appName);
         json.put("appNote",appNote);
         json.put("appAPIKey",appAPIKey);
+        json.put("appServerSettings",appServerSettings);
         return json;
     }
 }

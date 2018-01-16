@@ -60,6 +60,11 @@ public class ControllerUtils {
             case "EMAIL_OCCUPIED":
                 request.getSession().setAttribute("error_info","该Email已经被注册过。");
                 return "redirect:/registerPage";
+
+            case "INSUFFICIENT_PERMISSIONS":
+                //当这个异常抛出时应该被记录下来，同时排查日志（有人试图寻找系统漏洞）
+                request.getSession().setAttribute("error_info","无权限。");
+                return "redirect:/error";
         }
         return null;
     }

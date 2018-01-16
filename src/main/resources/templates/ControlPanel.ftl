@@ -25,15 +25,5 @@
     <#include "./common/footer.ftl"/>
 
 </div>
-
-
-<script src="./layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
-
-    });
-</script>
 </body>
 </html>

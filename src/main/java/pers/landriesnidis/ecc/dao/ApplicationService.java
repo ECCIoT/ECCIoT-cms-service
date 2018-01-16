@@ -1,6 +1,7 @@
 package pers.landriesnidis.ecc.dao;
 
 import pers.landriesnidis.ecc.bean.ApplicationBean;
+import pers.landriesnidis.ecc.bean.DeveloperBean;
 
 import java.util.List;
 
@@ -8,6 +9,12 @@ import java.util.List;
  * Created by landriesnidis on 17-12-20.
  */
 public interface ApplicationService {
+
+
+    boolean createNewUser(final String strEmail, final String strPassword, final String strPhone, final int intIndustry, final String strSession);
+    boolean checkUserPassword(final String strEmail, final String strPassword, final String strSession);
+    DeveloperBean checkUserSession(String strSessionId);
+    boolean setApplicationServerSettings(String strSessionId,String appApikey,String configParam);
 
     /**
      * 创建应用

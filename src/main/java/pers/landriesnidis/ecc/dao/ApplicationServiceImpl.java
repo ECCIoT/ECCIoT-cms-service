@@ -23,9 +23,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-
+    @Override
     public boolean createNewUser(final String strEmail, final String strPassword, final String strPhone, final int intIndustry, final String strSession){
-
         jdbcTemplate.update("CALL UserRegister(?,?,?,?,?)", new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement preparedStatement) throws SQLException {
@@ -36,13 +35,11 @@ public class ApplicationServiceImpl implements ApplicationService {
                 preparedStatement.setString(5,strSession);
             }
         });
-
         return true;
     }
 
-
+    @Override
     public boolean checkUserPassword(final String strEmail, final String strPassword, final String strSession) {
-
         jdbcTemplate.update("CALL UserLogin(?,?,?)", new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement preparedStatement) throws SQLException {
@@ -51,15 +48,27 @@ public class ApplicationServiceImpl implements ApplicationService {
                 preparedStatement.setString(3,strSession);
             }
         });
-
         return false;
     }
 
-
+    @Override
     public DeveloperBean checkUserSession(String strSessionId) {
         RowMapper<DeveloperBean> mapper = new BeanPropertyRowMapper<DeveloperBean>(DeveloperBean.class);
         DeveloperBean user = jdbcTemplate.queryForObject("CALL GetDeveloperInfoBySession(?)",mapper,strSessionId);
         return user;
+    }
+
+    @Override
+    public boolean setApplicationServerSettings(final String strSessionId, final String appApikey, final String configParam) {
+        jdbcTemplate.update("CALL setApplicationServerSettings(?,?,?)", new PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement preparedStatement) throws SQLException {
+                preparedStatement.setString(1,strSessionId);
+                preparedStatement.setString(2,appApikey);
+                preparedStatement.setString(3,configParam);
+            }
+        });
+        return false;
     }
 
     @Override

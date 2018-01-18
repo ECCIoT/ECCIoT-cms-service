@@ -21,20 +21,8 @@
 
             <!-- 内容主体区域 ： 开始 -->
 
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <legend>应用管理</legend>
-            </fieldset>
-
-            <div class="site-demo-button" id="layerDemo" style="margin-left: 30px">
-                <button data-method="createApp" class="layui-btn">创建新应用</button>
-            </div>
-
             <#--应用列表-->
             <#include "./include/application_list.ftl"/>
-
-            <#--流量统计-->
-            <#include "./include/sys_trafficstatistics.ftl"/>
-
 
             <!-- 内容主体区域 ： 结束 -->
 

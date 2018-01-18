@@ -25,7 +25,10 @@
 
         <div style="padding: 15px;">
 
+        <#if !model??><#assign model="null"/></#if>
+
             <!-- 内容主体区域 ： 开始 -->
+
             <form class="layui-form" action="/serverSettingParam">
 
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
@@ -86,7 +89,6 @@
                     </div>
                 </div>
 
-
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;"></fieldset>
                 <div class="layui-form-item" style="margin-left: 30px">
                     <button class="layui-btn" lay-submit="" lay-filter="demo1">保存配置</button>
@@ -104,7 +106,6 @@
 
 </div>
 
-<script src="../layui/layui.js" charset="utf-8"></script>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form

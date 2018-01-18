@@ -6,13 +6,19 @@
                 <a class="" href="javascript:;">应用管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="/AppPage">应用概况</a></dd>
-                    <dd><a href="/ServerSetting;">服务器配置</a></dd>
+                    <dd><a href="/AppList">应用列表</a></dd>
+                    <dd><a href="/AppTrafficStatistics">流量统计</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">设备群组</a></li>
+            <li class="layui-nav-item"><a href="devices">设备群组</a></li>
             <li class="layui-nav-item"><a href="">APIKey管理</a></li>
-            <li class="layui-nav-item"><a href="">数据通信</a></li>
-
+            <li class="layui-nav-item layui-nav-itemed">
+                <a class="" href="javascript:;">数据通信</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">趋势分析</a></dd>
+                    <dd><a href="">记录查询</a></dd>
+                </dl>
+            </li>
             <li class="layui-nav-item layui-nav-itemed">
                 <a class="" href="javascript:;">我的账号</a>
                 <dl class="layui-nav-child">

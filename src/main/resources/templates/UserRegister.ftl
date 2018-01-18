@@ -83,8 +83,6 @@
     </div>
 </div>
 
-
-<script src="../layui/layui.js" charset="utf-8"></script>
 <script>
     var pswd;
 

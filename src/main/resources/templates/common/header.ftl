@@ -1,14 +1,8 @@
 
 <script src="./layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
-    });
-</script>
 
 <div class="layui-header">
-    <div class="layui-logo">ECC云联万物</div>
+    <div class="layui-logo"><a href="/index"><font color="#eee8aa">ECC云联万物</font></a></div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
         <li class="layui-nav-item"><a href="">解决方案</a></li>
@@ -46,7 +40,12 @@
             <li class="layui-nav-item"><a href="/loginPage">开发者中心</a></li>
             <li class="layui-nav-item"><a href="/registerPage">注册</a></li>
         </ul>
-
     </#if>
 </div>
 
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+</script>

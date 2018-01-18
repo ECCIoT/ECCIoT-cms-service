@@ -1,5 +1,6 @@
 package pers.landriesnidis.ecc.controller;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pers.landriesnidis.ecc.bean.ApplicationBean;
+import pers.landriesnidis.ecc.bean.DeviceBean;
 import pers.landriesnidis.ecc.dao.ApplicationService;
 import pers.landriesnidis.ecc.dao.DeveloperService;
 
@@ -27,13 +29,13 @@ public class ApplicationController {
     private ApplicationService applicationService;
 
     @RequestMapping("/AppPage")
-    public String loginPage(ModelMap map, HttpServletRequest request){
+    public String AppPage(ModelMap map, HttpServletRequest request){
 
         //检测Session是否有效,并载页面动态信息
         String returnUrl = ControllerUtils.checkSessionInvalid(map,request);
         if(returnUrl!=null)return returnUrl;
 
-        //获取当前用户拥有的APP列表
+//        //获取当前用户拥有的APP列表
 //        List<ApplicationBean> lstApp = applicationService.getApplicationBySession(request.getSession().getId());
 //        //判断拥有的APP数量是否不为0
 //        if(lstApp.size()>0){
@@ -49,17 +51,38 @@ public class ApplicationController {
         return "ApplicationManage";
     }
 
+    @RequestMapping("/AppList")
+    public String AppList(ModelMap map, HttpServletRequest request){
+
+        //检测Session是否有效,并载页面动态信息
+        String returnUrl = ControllerUtils.checkSessionInvalid(map,request);
+        if(returnUrl!=null)return returnUrl;
+
+        return "ApplicationList";
+    }
+
+    @RequestMapping("/AppTrafficStatistics")
+    public String AppTrafficStatistics(ModelMap map, HttpServletRequest request){
+
+        //检测Session是否有效,并载页面动态信息
+        String returnUrl = ControllerUtils.checkSessionInvalid(map,request);
+        if(returnUrl!=null)return returnUrl;
+
+        return "ApplicationTrafficStatistics";
+    }
+
     @RequestMapping("/ServerSetting")
     public String serverSetting(ModelMap map, HttpServletRequest request){
         //检测Session是否有效,并载页面动态信息
         String returnUrl = ControllerUtils.checkSessionInvalid(map,request);
         if(returnUrl!=null)return returnUrl;
 
-        //获取当前用户拥有的APP列表
-        List<ApplicationBean> lstApp = applicationService.getApplicationBySession(request.getSession().getId());
-        if(lstApp.size()>0){
-            //这里只读取第一个记录
-            ApplicationBean app = lstApp.get(0);
+        //读取参数
+        String strAppApiKey = request.getParameter("apikey");
+
+        //获取指定的应用信息
+        ApplicationBean app = applicationService.getAppInfoByKey(strAppApiKey);
+        if(app != null){
             map.addAttribute("app_name",app.getAppName());
             map.addAttribute("app_api_key",app.getAppAPIKey());
 
@@ -78,6 +101,7 @@ public class ApplicationController {
         }
         return "ServerSetting";
     }
+
 
     @RequestMapping("/serverSettingParam")
     public String serverSettingParam(ModelMap map, HttpServletRequest request){
@@ -108,7 +132,7 @@ public class ApplicationController {
             if(redirectUrl!=null)return redirectUrl;
         }
 
-        return "redirect:/ServerSetting";
+        return "redirect:/ServerSetting?apikey="+strApiKey;
     }
 
     @RequestMapping("/createApp")
